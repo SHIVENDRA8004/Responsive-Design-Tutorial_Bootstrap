@@ -48,8 +48,14 @@
                 <div class="col-4">
                     <button type="button" class="btn btn-secondary">Secondary</button>
                 </div>
+
                 <div class="col-4">
-                    <button type="button" class="btn btn-danger">Danger</button>
+                    <button type="button" class="btn btn-primary" id="liveAlertBtn">Dabao Button</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="liveAlertPlaceholder"></div>
                 </div>
             </div>
             <!-- Modal -->
@@ -87,5 +93,26 @@
             integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
             crossorigin="anonymous"
         ></script>
+        <script>
+            const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+            const appendAlert = (message, type) => {
+                const wrapper = document.createElement("div");
+                wrapper.innerHTML = [
+                    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                    `   <div>${message}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    "</div>",
+                ].join("");
+
+                alertPlaceholder.append(wrapper);
+            };
+
+            const alertTrigger = document.getElementById("liveAlertBtn");
+            if (alertTrigger) {
+                alertTrigger.addEventListener("click", () => {
+                    appendAlert("Good Work, Now Go to Hell!", "success");
+                });
+            }
+        </script>
     </body>
 </html>
